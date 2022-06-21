@@ -5,3 +5,4 @@ This script will look for a CSV named "target". After running it will scrape the
 the columns found in the list "keeps".
 
 It will then output a new CSV with the name of var 'output_file_name', with only completed rows, sorted by Features first.
+*This currently outputs to the directory that main.py is run in.
