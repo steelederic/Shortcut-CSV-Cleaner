@@ -1,27 +1,33 @@
 import pandas as pd
-'''
+
+"""
 This script will look for a CSV named "target". After running it will scrape the .csv of
 the columns found in the list "keeps".
 
 It will then output a new CSV with the name of var 'output_file_name'
-'''
-output_file_name = 'June 22'
-keeps = ['id', 'name', 'type', 'requester', 'owners', 'description',
-         'is_completed', 'external_tickets', 'epic_id', 'epic']
+"""
+output_file_name = "July 11"
 
-# Make this the location of your CSV.
-data = pd.read_csv(
-    f'C:\\Users\\NetYield Support\\Desktop\\shortcut\\target.csv')
+keeps = [
+    "id",
+    "name",
+    "type",
+    "requester",
+    "owners",
+    "is_completed",
+    "external_tickets",
+    "epic_id",
+    "epic",
+]
 
-# Wipe out every row that is incomplete
+data = pd.read_csv(f"target.csv")
 data = data[data.is_completed != False]
 
-# Iterate through columns and get rid of trash
 for col in data:
     if col not in keeps:
         data.pop(col)
-        print(f'Deleted {col}')
+        print(f"Deleted {col}")
 
 # Sort by Features first, create our output CSV.
-sorted_data = data.sort_values(by=['type'], ascending=False)
-sorted_data.to_csv(output_file_name + '.csv', encoding='utf-8', index=False)
+sorted_data = data.sort_values(by=["type"], ascending=False)
+sorted_data.to_csv(output_file_name + ".csv", encoding="utf-8", index=False)
